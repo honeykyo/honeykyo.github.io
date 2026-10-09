@@ -1,0 +1,32 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
+  "description": "A scatterplot showing horsepower and miles per gallons for various cars.",
+  "data": {
+    "url": "https://raw.githubusercontent.com/honeykyo/honeykyo.github.io/refs/heads/honeykyo-patch-2/UK_choc_priceindex.csv"
+  },
+  "mark": {
+    "type": "point",
+    "color": "#18A136"
+  },
+  "title": {
+    "text": "Scatter plot",
+    "subtitle": "Example chart",
+    "subtitleFontSize": 9
+  },
+  "encoding": {
+    "x": {
+      "field": "date",
+      "type": "temporal"
+    },
+    "y": {
+      "field": "CPI_choc",
+      "type": "quantitative",
+      "scale": {
+        "domain": [
+          90,
+          150
+        ]
+      }
+    }
+  }
+}
