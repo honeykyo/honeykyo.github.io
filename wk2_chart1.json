@@ -1,0 +1,29 @@
+{
+  "$schema":  "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": {
+    "text": "UK Chocolate Price Index",
+    "subtitle": "Consumer Price Index over time",
+    "subtitleFontSize": 10
+  },
+  "data": {
+    "url": "https://raw.githubusercontent.com/honeykyo/honeykyo.github.io/refs/heads/main/UK_choc_priceindex.csv"
+  },
+  "mark": {
+    "type": "line",
+    "color": "#18A136"
+  },
+  "encoding": {
+    "x": {
+      "field": "date",
+      "type": "quantitative",
+      "title": "Year"
+    },
+    "y": {
+      "field": "CPI_choc",
+      "type": "quantitative",
+      "title": "CPI Index"
+    }
+  },
+  "width": 350,
+  "height": 250
+}

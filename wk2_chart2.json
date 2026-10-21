@@ -1,0 +1,103 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
+   "title": {
+    "text": "GDP Growth and Copper Price",
+    "subtitle": "*Source: Economics Observatory",
+    "subtitleFontSize": 10
+  },
+  "width": 350,
+  "height": 250,
+  "background": "#f7f7f7",
+  "data": {
+    "values": [
+      { "year": 2006, "gdp": 7.529, "copper_price": 3.04908933663549 },
+      { "year": 2007, "gdp": 8.518, "copper_price": 3.228749928181123 },
+      { "year": 2008, "gdp": 9.127, "copper_price": 3.15519227803431 },
+      { "year": 2009, "gdp": 1.096, "copper_price": 2.3359656841844245 },
+      { "year": 2010, "gdp": 8.33, "copper_price": 3.417671374961067 },
+      { "year": 2011, "gdp": 6.328, "copper_price": 4.004393803316067 },
+      { "year": 2012, "gdp": 6.14, "copper_price": 3.611620143153923 },
+      { "year": 2013, "gdp": 5.852, "copper_price": 3.3257810113912307 },
+      { "year": 2014, "gdp": 2.384, "copper_price": 3.1131215356841544 },
+      { "year": 2015, "gdp": 3.251, "copper_price": 2.499523727445093 },
+      { "year": 2016, "gdp": 3.954, "copper_price": 2.208090283132694 },
+      { "year": 2017, "gdp": 2.519, "copper_price": 2.798743850036136 },
+      { "year": 2018, "gdp": 3.969, "copper_price": 2.9619238992056083 },
+      { "year": 2019, "gdp": 2.24, "copper_price": 2.726055586299075 },
+      { "year": 2022, "gdp": 2.819, "copper_price": 4.001710045268573 },
+      { "year": 2023, "gdp": -0.35, "copper_price": 3.8511549987450597 },
+      { "year": 2024, "gdp": 3.514, "copper_price": 4.146746378060619 },
+      { "year": 2025, "gdp": 3.439, "copper_price": 4.512077667201907 },
+      { "year": 2026, "gdp": 2.82, "copper_price": 5.937379986876046 }
+    ]
+  },
+  "transform": [
+    {
+      "calculate": "toDate(toString(datum.year))",
+      "as": "year"
+    }
+  ],
+  "encoding": {
+    "x": {
+      "field": "year",
+      "type": "temporal",
+      "timeUnit": "year",
+      "title": "Year",
+      "axis": {
+        "domain": false,
+        "labelFontSize": 11
+      }
+    }
+  },
+  "layer": [
+    {
+      "data": {
+        "values": [
+          { "start": "2020", "end": "2022" }
+        ]
+      },
+      "mark": {
+        "type": "rect",
+        "color": "#eeeeee"
+      },
+      "encoding": {
+        "x": { "field": "start", "type": "temporal" },
+        "x2": { "field": "end" }
+      }
+    },
+    {
+      "mark": {
+        "type": "bar",
+        "color": "#36B7B4"
+      },
+      "encoding": {
+        "y": {
+          "field": "gdp",
+          "type": "quantitative",
+          "title": "GDP Growth (%)"
+        },
+        "tooltip": [
+          { "field": "year", "type": "temporal", "timeUnit": "year" },
+          { "field": "gdp", "type": "quantitative", "title": "GDP Growth (%)" }
+        ]
+      }
+    },
+    {
+      "mark": {
+        "type": "line",
+        "color": "#E6224B"
+      },
+      "encoding": {
+        "y": {
+          "field": "copper_price",
+          "type": "quantitative",
+          "title": "Copper Price ($/lb)"
+        },
+        "tooltip": [
+          { "field": "year", "type": "temporal", "timeUnit": "year" },
+          { "field": "copper_price", "type": "quantitative", "title": "Copper Price" }
+        ]
+      }
+    }
+  ]
+}

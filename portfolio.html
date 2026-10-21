@@ -1,13 +1,6 @@
-<!-- This HTML file provides a simple example of a portfolio page. It contains a header, a few sections, and a few charts. -->
-<!-- It works with the three css files in this folder: example1.css, example2.css and example3.css. -->
-<!-- The HTML file defines the structure of the page, and the CSS files define how it looks. -->
-<!-- The CSS examples are all designed to work with this page. Try swapping them out on line 29 and see what happens. -->
 
-<!-- Take a look around and make your own copy to adapt for your own use. -->
 
-<!-- This is a comment -->
-<!-- Comments are not displayed in the browser -->
-<!-- They can be used to leave notes in the code -->
+<!-- This is Hyunkyo LIM's Portfolio page of PP 434 Practice. -->
 
 <!DOCTYPE html>
 <html> 
@@ -19,104 +12,105 @@
         - Tags appear as an opening <div> and closing </div> pair
     -->
 
-<head>    
-    <!-- The head tag links to resources our page needs and defines information about it. Tags in the <head> aren't displayed on the page. -->
-
-    <!-- This is a link to a stylesheet which contains rules about how each element on the page should be defined-->
-    <!-- Try swapping example1.css to another, and take a look at example1.css to see if you understand it-->
+<head>     
     <link rel="stylesheet" type="text/css" href="Example3.css">
-    <title>My Portfolio</title> <!-- The title displayed in the browser tab, not on the page itself -->
+    <title>My Portfolio</title> 
 
-    <!-- This is a link to the vega-lite which we're using to make graphs -->
+    <!-- vega-lite library which I am using to make graphs -->
     <script src="https://cdn.jsdelivr.net/npm/vega@5"></script>
     <script src="https://cdn.jsdelivr.net/npm/vega-lite@5"></script>
     <script src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
 
     <style>
-        #chartGrid {
-            display: flex;
-        }
-        
+        #chartGrid { display: flex; }
     </style>
 </head>
 
 <body> 
-<!-- The body tag contains the elements that visitors to our page will see. -->
-    <h1 class="big" style="margin-bottom: 0px;"> <!-- We have added a class to the header called "big" which we can use to style it in the CSS -->
-        <!-- This is a header, it is the largest text on the page -->
-        LSE 434 Practice : Hyunkyo LIM
+<!-- This is a header, the largest text on the page -->
+    <h1 class="big" style="margin-bottom: 0px;"> 
+        LSE PP434 Portfolio : Hyunkyo LIM
     </h1>
     <p style="margin-top: 0px; color: darkblue">
-        <!-- we're setting the margin to 0px so the header and authour name are close together -->
-        Hyunkyo LIM | <a href="https://www.linkedin.com/in/YOUR_LINKEDIN/">LinkedIn</a> | <a
-            href="https://www.github.com/honeykyo">GitHub</a>
+        <!-- I'm setting the margin to 0px so the header and author name are close together -->
+        Hyunkyo LIM | <a href="https://www.linkedin.com/in/hyunkyo-lim">LinkedIn</a> | 
+        <a href="https://www.github.com/honeykyo">GitHub</a>
     </p>
-    <h3 class="small"> <!-- We have added a class to the header called "small" which we can use to style it in the CSS -->
-        This page acts as your portfolio of charts. You can use it as a good starting point to display your work but make sure to customise it to make it your own, or even start from scratch.  
+    <h3 class="small"> 
+      <!-- I have added a class to the header called "small" which I can use to style it in the CSS -->
+        This page acts as my portfolio of data visualisation work for the PP434 course. 
     </h3>
 
-    <!-- We're organising the page into sections, with each section containing a chart, title and a description -->
+      <!-- portfolio challenge week1 -->
     <section>
         <div class="chart-description">
             <h2>Section 1: A basic chart</h2>
-            <p> <!-- This is a paragraph, it's the main way to display text on a web page -->
-                We've organised the page into sections, with each section containing a chart, title and a description. Here, we can describe the chart and give some context.
-                As a first example, we're using a basic chart from our repo.
+            <p> This is a simple chart from our repo.
             </p>
             <div style="display: flex; gap:20px;">
-                
-    
-        <figure id="Location1"></figure> <!-- we give it an id so we can put a vega-lite graph here with VegaEmbed -->
-        <figure id="Location3"></figure> <!-- we give it an id so we can put a vega-lite graph here with VegaEmbed -->
- 
-                </div>
+            <figure id="Location1"></figure> 
+            <figure id="Location2"></figure>
+                </div> <!--end of chart description-->
     </section>
 
-    <!-- Do you want to add more sections? -->
-        <!-- Try copying pasting the section above -->
-        <!-- You'll need to change the id of the figure "<figure id="Location3"... -->
-        <!-- ... and add a new variable for the graph spec in the script at the bottom of the page -->
+    <!-- portfolio challenge week2 -->
+    <section>
+        <div class="chart-description">
+            <h2>Section 2: A more complex chart</h2>
+            <p> This is a more complex chart with additional features. I made it by using github repo and vega-lite.
+            </p>
+           <div style="display: flex; gap:20px;">
+        <figure id="Location3"></figure>
+        <figure id="Location4"></figure>
+        </div> <!--end of chart description-->
+    </section>
 
+   <!-- JavaScript Execution -->
+<script>
+  // ---- week1 charts ----
+  let figure_1_spec = "https://raw.githubusercontent.com/EconomicsObservatory/courses/main/2/s2_chart2.json";
+  vegaEmbed('#Location1', figure_1_spec);
 
-    <!-- This is a script, it's a way to run JavaScript code on the page -->
-    <script>
-        // This is a comment in JavaScript - it's a different language to HTML and CSS
+  let figure_2_spec = "wk1_chart2.json"; 
+  vegaEmbed('#Location2', figure_2_spec);
 
-      let figure_1_spec = "https://raw.githubusercontent.com/EconomicsObservatory/courses/main/2/s2_chart2.json";
-vegaEmbed('#Location1', figure_1_spec);
-
-let figure_2_spec = {
-  "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
-  "description": "A scatterplot showing horsepower and miles per gallons for various cars.",
+  // ---- week2 charts ----
+  // 2-1: UK Chocolate Price Index 
+let figure_3_spec = {
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "width": 350,
+  "height": 250,
+  "title": {
+    "text": "UK Chocolate Price Index",
+    "subtitle": "Consumer Price Index over time",
+    "subtitleFontSize": 10
+  },
   "data": {
-    "url": "https://raw.githubusercontent.com/honeykyo/honeykyo.github.io/refs/heads/honeykyo-patch-2/UK_choc_priceindex.csv"
+    "url": "https://raw.githubusercontent.com/honeykyo/honeykyo.github.io/refs/heads/main/UK_choc_priceindex.csv",
+    "format": {"type": "csv"}
   },
   "mark": {
-    "type": "point",
+    "type": "line",
+    "point": true,
     "color": "#18A136"
-  },
-  "title": {
-    "text": "Scatter plot",
-    "subtitle": "Example chart",
-    "subtitleFontSize": 9
   },
   "encoding": {
     "x": {
       "field": "date",
-      "type": "temporal"
+      "type": "quantitative",
+      "title": "Year"
     },
     "y": {
       "field": "CPI_choc",
       "type": "quantitative",
-      "scale": {
-        "domain": [90, 150]
-      }
+      "title": "CPI Index"
     }
   }
 };
-vegaEmbed('#Location3', figure_2_spec);
-   
-    </script>
-</body>
-    
-</html>
+
+vegaEmbed('#Location3', figure_3_spec);
+
+  // 2-2: GDP Growth and copper price
+  let figure_4_spec = "wk2_chart2.json";
+  vegaEmbed('#Location4', figure_4_spec);
+</script>
